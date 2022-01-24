@@ -1,0 +1,52 @@
+.apartments{
+  display: flex;
+  height: 100vh;
+  .listingsDetails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .listings{
+      height: 84%;
+      background: #eee;
+      padding: 20px;
+      overflow: scroll;
+    }
+    .header{
+      padding: 0 20px;
+      font-weight: 700;
+      text-align: center;
+      display: flex;
+      .backIcon{
+        align-items: center;
+        display: flex;
+      }
+      .title{
+        flex: 1;
+      }
+    }
+    .filters{
+      padding: 0 20px;
+      background: #b42222;
+      color: #fff;
+      p {
+        cursor: pointer;
+      }
+      .priceFilter{
+        display: flex;
+        mat-slider{
+          flex: 1;
+        }
+      }
+    }
+  }
+  .listingMap{
+    flex: 3;
+    .customMap{
+      height: 93vh;
+      lib-map-box{
+        height: 93vh;
+        display: block
+      }
+    }
+  }
+}

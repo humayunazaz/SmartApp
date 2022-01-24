@@ -1,0 +1,39 @@
+<div class="apartments">
+  <div class="listingsDetails">
+    <div class="header">
+      <div class="backIcon" *ngIf="listingDetail">
+        <mat-icon (click)="backListView()">keyboard_backspace</mat-icon>
+      </div>
+      <div class="title">
+        <p>Apartment Agents</p>
+      </div>
+    </div>
+    <div class="filters">
+      <div class="priceRange" *ngIf="priceRange">
+        <p (click)="toggleFilter()">Price: {{priceRange.min | currency: 'USD'}} - {{priceRange.max | currency: 'USD'}}</p>
+        <div class="priceFilter" *ngIf="priceFilterState">
+          <mat-slider thumbLabel
+            [displayWith]="formatLabel"
+            tickInterval="50"
+            step="50"
+            [min]="(masterPriceRange | async)?.min"
+            [max]="(masterPriceRange | async)?.max"
+            aria-label="units"
+            [(ngModel)]="filterMaxPrice"
+          ></mat-slider>
+          <div class="actionBtn">
+            <button mat-raised-button (click)="filterListings()">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="listings" *ngIf="listings">
+      <app-listing-detail [listings]="listings" (selectedListing)="selectedListing($event)"></app-listing-detail>
+    </div>
+  </div>
+  <div class="listingMap">
+    <div class="customMap" *ngIf="geoJsons && mapConfigs">
+      <lib-map-box [featureListings]="geoJsons" [mapConfiguration]="mapConfigs" (selectedMarkerId)="onMarkerSelection($event)"></lib-map-box>
+    </div>
+  </div>
+</div>

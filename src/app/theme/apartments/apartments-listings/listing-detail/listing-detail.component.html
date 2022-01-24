@@ -1,0 +1,15 @@
+<div class="listings">
+  <mat-card (click)="selectListing(listing)" *ngFor="let listing of listings" class="singleListing">
+    <mat-card-content>
+      <div class="content">
+        <div class="titleDescription">
+          <h3>{{listing.name}}</h3>
+          <p>{{listing.streetAddress}} {{listing.city}} {{listing.state}}</p>
+        </div>
+        <div class="heroImg">
+          <img src="{{listing.photo}}" alt="">
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
